@@ -6,6 +6,11 @@ import { Routes, Route, Link } from 'react-router-dom';
 
 function App() {
 
+  // let callBackend = (e) => {
+  //   fetch('http://localhost:3001/').then(res => res.json()).then(data => {
+  //     console.log(data)
+  //   })
+  // }
   const user_id = localStorage.getItem('user_id')
 
   return (
