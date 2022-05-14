@@ -5,10 +5,13 @@ import Grid from '@mui/material/Grid';
 import { Routes, Route, Link } from 'react-router-dom';
 
 function App() {
+
+  const user_id = localStorage.getItem('user_id')
+
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Beach Bod Ready?</h1>
+        <h1>All Shapes and Sizes</h1>
       </header>
       <Grid container spacing={2}>
         {/** Component for Login form */}
