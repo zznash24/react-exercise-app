@@ -3,7 +3,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Grid from '@mui/material/Grid';
 import { Routes, Route, Link } from 'react-router-dom';
-import WorkOutDay from "./components/workout";
+import workoutApp from "./components/workout";
 // import React, { Component } from 'react';
 
 
@@ -34,7 +34,7 @@ function App() {
         </Routes>
       </Grid>
 
-      <WorkOutDay />
+      <workoutApp />
     </div>
   );
 }
