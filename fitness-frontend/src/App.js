@@ -3,6 +3,10 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Grid from '@mui/material/Grid';
 import { Routes, Route, Link } from 'react-router-dom';
+import WorkOutDay from "./components/workout";
+// import React, { Component } from 'react';
+
+
 
 function App() {
 
@@ -11,7 +15,6 @@ function App() {
   //     console.log(data)
   //   })
   // }
-  const user_id = localStorage.getItem('user_id')
 
   return (
     <div className="App">
@@ -19,8 +22,7 @@ function App() {
         <h1>All Shapes and Sizes</h1>
       </header>
       <Grid container spacing={2}>
-        {/** Component for Login form */}
-
+        
         <Grid item>
           <Link to="/">Home</Link>
           <Link to="/login">Login</Link>
@@ -31,6 +33,8 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </Grid>
+
+      <WorkOutDay />
     </div>
   );
 }

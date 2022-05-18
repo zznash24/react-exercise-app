@@ -17,6 +17,17 @@ app.use(express.urlencoded({ extended: false }));
 // this communicates with our database
 const models = require('./models');
 const user = require('./models/user');
+// API Key
+
+const fetch = require('node-fetch');
+
+const options = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
+        'X-RapidAPI-Key': '5e8b9cb1f0msh09ab79c40301ed3p1d798djsnca9c961a0b9f'
+    }
+};
 
 //Session secret setup
 app.use(cookieParser());
@@ -54,7 +65,7 @@ app.route('/sign-up')
     }).post(async (req, res) => {
         const { email, password, name } = req.body;
         if (!email || !password || !name) {
-        return res.json({ error: 'Email, password, name are required' });
+            return res.json({ error: 'Email, password, name are required' });
         }
         bcyrpt.hash(password, saltRounds, (err, hash) => {
             models.user.create({
@@ -63,7 +74,7 @@ app.route('/sign-up')
                 name: name,
             }).then((user) => {
                 console.log(user);
-                return res.status(200).json({ success: true, user_id:user.id });
+                return res.status(200).json({ success: true, user_id: user.id });
             }).catch(e => {
                 let errors = [];
                 console.log(e)
@@ -108,19 +119,17 @@ app.get('/logout', (req, res) => {
     }
 });
 
-// Api Call 
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
-    'X-RapidAPI-Key': 'd7e64b9d96mshab31c4df752e9cep1df2dfjsncf567034bfc0'
-  }
-};
 
-fetch('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', options)
-	.then(res => res.json())
-	.then(json => console.log(json))
-	.catch(err => console.error('error:' + err));
+// Api Call
+app.post('exercises', (req, res) => {
+    fetch(`https://exercisedb.p.rapidapi.com/exercises/${searchByParam}/${searchTermParam}`, options)
+    .then(res => res.json())
+    .then(json => {
+        res.json(json)
+        console.log(json)
+    })
+    .catch(err => console.error('error:' + err));
+})
 
 
 
