@@ -3,18 +3,17 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Grid from '@mui/material/Grid';
 import { Routes, Route, Link } from 'react-router-dom';
-import workoutApp from "./components/workout";
-// import React, { Component } from 'react';
+import WorkoutApp from "./components/Workout";
 
-
+// let callBackend = (e) => {
+//     fetch('/exercises').then(res => res.json()).then(data => {
+//       console.log(data)
+//     })
+//   }
 
 function App() {
 
-  // let callBackend = (e) => {
-  //   fetch('http://localhost:3001/').then(res => res.json()).then(data => {
-  //     console.log(data)
-  //   })
-  // }
+  
 
   return (
     <div className="App">
@@ -34,7 +33,7 @@ function App() {
         </Routes>
       </Grid>
 
-      <workoutApp />
+      <WorkoutApp />
     </div>
   );
 }

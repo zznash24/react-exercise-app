@@ -4,7 +4,7 @@ function DataPagination({ itemsPerPage, totalItems, page, setPage }) {
 
   const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) { //Allows pagination.
+  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pageNumbers.push(i);
   }
 

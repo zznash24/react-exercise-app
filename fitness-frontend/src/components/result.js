@@ -8,9 +8,9 @@ import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const ExpandMore = styled((props) => { ///Code for the expand function on the MUI card.
+const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
@@ -23,52 +23,33 @@ const ExpandMore = styled((props) => { ///Code for the expand function on the MU
 
 function Result(props) {
   const [expanded, setExpanded] = React.useState(false);
-
-  const capitalizer = (input) => input.charAt(0).toUpperCase() + input.slice(1); //Capitalizes first letter.
-
+  
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    <li
-      id={props.data.id}
-      className="Result"
-    >
-      <Card
-        className="Result-card"
-        raised
-      >
-        <CardActions disableSpacing>
+    <li id={props.data.id} className="CardResult">
+      <Card className="Result-card">
+        <CardActions>
           <CardHeader
             className="Result-header"
-            sx={{ padding: "0" }}
-            action={
-              <ExpandMore
-                expand={expanded}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-              >
+             action={
+              <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded}>
                 <ExpandMoreIcon />
               </ExpandMore>
             }
-            title={capitalizer(props.data.name)} />
+            title={props.data.name} />
         </CardActions>
-        <Collapse
-          in={expanded}
-          timeout="auto"
-          unmountOnExit
-        >
+        <Collapse>
           <CardContent>
             <CardMedia
               component="img"
               image={props.data.gifUrl}
-              alt="Exercise title here"
             />
-            <Typography paragraph><b>Target muscle:</b> {capitalizer(props.data.target)}</Typography>
-            <Typography paragraph><b>Body part used:</b> {capitalizer(props.data.bodyPart)}</Typography>
-            <Typography paragraph><b>Equipment required:</b> {capitalizer(props.data.equipment)}</Typography>
+            <Typography paragraph><b>Target muscle:</b> {props.data.target}</Typography>
+            <Typography paragraph><b>Body part used:</b> {props.data.bodyPart}</Typography>
+            <Typography paragraph><b>Equipment required:</b> {props.data.equipment}</Typography>
           </CardContent>
         </Collapse>
       </Card>
