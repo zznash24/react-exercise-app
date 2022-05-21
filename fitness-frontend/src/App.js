@@ -5,15 +5,9 @@ import Grid from '@mui/material/Grid';
 import { Routes, Route, Link } from 'react-router-dom';
 import WorkoutApp from "./components/Workout";
 
-// let callBackend = (e) => {
-//     fetch('/exercises').then(res => res.json()).then(data => {
-//       console.log(data)
-//     })
-//   }
 
 function App() {
 
-  
 
   return (
     <div className="App">
@@ -28,12 +22,16 @@ function App() {
           <Link to="/signup">SignUp</Link>
         </Grid>
         <Routes>
+          <Route Path="/" />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
+
       </Grid>
 
       <WorkoutApp />
+
+       
     </div>
   );
 }

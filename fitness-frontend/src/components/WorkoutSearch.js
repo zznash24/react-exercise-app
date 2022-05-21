@@ -27,7 +27,7 @@ function WorkoutSearch(props) {
                     </Select>
                 </FormControl>
                 <FormControl>
-                    <TextField variant="outlined" value={props.values.searchTerm} onChange={props.handleChange} name="searchTerm" label="Search" />
+                    <TextField value={props.values.searchTerm} onChange={props.handleChange} name="searchTerm" label="Search" />
                 </FormControl>
                 <Button onClick={(event) => {
                         event.preventDefault();

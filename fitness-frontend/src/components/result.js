@@ -13,13 +13,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest
-  })
-}));
+});
 
 function Result(props) {
   const [expanded, setExpanded] = React.useState(false);
@@ -43,10 +37,9 @@ function Result(props) {
         </CardActions>
         <Collapse>
           <CardContent>
-            <CardMedia
-              component="img"
-              image={props.data.gifUrl}
-            />
+            <CardMedia component="img"
+              image={props.data.gifUrl}>
+              </CardMedia>
             <Typography paragraph><b>Target muscle:</b> {props.data.target}</Typography>
             <Typography paragraph><b>Body part used:</b> {props.data.bodyPart}</Typography>
             <Typography paragraph><b>Equipment required:</b> {props.data.equipment}</Typography>
