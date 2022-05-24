@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -9,15 +9,35 @@ import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import LocalStor from "../hooks/LocalStor";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
-const ExpandMore = styled((props) => {
+
+const ExpandMore = styled((props) => { ///Code for the expand function on the MUI card.
   const { expand, ...other } = props;
   return <IconButton {...other} />;
-});
+})(({ theme, expand }) => ({
+  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  marginLeft: "auto",
+  transition: theme.transitions.create("transform", {
+    duration: theme.transitions.duration.shortest
+  })
+}));
 
 function Result(props) {
   const [expanded, setExpanded] = React.useState(false);
-  
+  const [cWorkStatus, setcWorkStatus] = useState(false);
+  const [cWork] = LocalStor();
+
+  useEffect(() => {
+    for (let i = 0; i < cWork.length; i++) { 
+      if (cWork[i].id === props.data.id) { 
+        setcWorkStatus(true)
+      }
+    }
+  }, []);
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -28,21 +48,31 @@ function Result(props) {
         <CardActions>
           <CardHeader
             className="Result-header"
-             action={
-              <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded}>
+            action={
+              <ExpandMore expand={expanded}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}>
                 <ExpandMoreIcon />
               </ExpandMore>
             }
             title={props.data.name} />
         </CardActions>
-        <Collapse>
+        <Collapse 
+          in={expanded}
+          timeout="auto"
+          unmountOnExit>
           <CardContent>
             <CardMedia component="img"
               image={props.data.gifUrl}>
-              </CardMedia>
+            </CardMedia>
             <Typography paragraph><b>Target muscle:</b> {props.data.target}</Typography>
             <Typography paragraph><b>Body part used:</b> {props.data.bodyPart}</Typography>
             <Typography paragraph><b>Equipment required:</b> {props.data.equipment}</Typography>
+            <Box textAlign='center'>
+              {(cWorkStatus) = <Button onClick={() => { props.save(props.data); setcWorkStatus(true); }}>
+                  Save to Current WorkOut!
+                </Button>}
+            </Box>
           </CardContent>
         </Collapse>
       </Card>

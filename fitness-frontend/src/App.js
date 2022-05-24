@@ -4,7 +4,8 @@ import SignUp from './pages/SignUp';
 import Grid from '@mui/material/Grid';
 import { Routes, Route, Link } from 'react-router-dom';
 import WorkoutApp from "./components/Workout";
-
+import StopWatch from "./components/Stopwatch";
+import CurrWork from "./components/CurrentWork";
 
 function App() {
 
@@ -28,9 +29,11 @@ function App() {
         </Routes>
 
       </Grid>
-
-      <WorkoutApp />
-
+          <Grid>
+      {/*   <WorkoutApp /> */}
+      {/*   <StopWatch /> */}
+            <CurrWork />
+          </Grid>
        
     </div>
   );

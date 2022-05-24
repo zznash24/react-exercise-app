@@ -19,15 +19,15 @@ const models = require('./models');
 const user = require('./models/user');
 // API Key
 
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 
-const options = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
-        'X-RapidAPI-Key': '5e8b9cb1f0msh09ab79c40301ed3p1d798djsnca9c961a0b9f'
-    }
-};
+// const options = {
+//     method: 'GET',
+//     headers: {
+//         'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
+//         'X-RapidAPI-Key': '5e8b9cb1f0msh09ab79c40301ed3p1d798djsnca9c961a0b9f'
+//     }
+// };
 
 //Session secret setup
 app.use(cookieParser());
@@ -121,15 +121,15 @@ app.get('/logout', (req, res) => {
 
 
 // Api Call
-app.post('exercises', (req, res) => {
-    fetch(`https://exercisedb.p.rapidapi.com/exercises/${searchByParam}/${searchTermParam}`, options)
-    .then(res => res.json())
-    .then(json => {
-        res.json(json)
-        console.log(json)
-    })
-    .catch(err => console.error('error:' + err));
-})
+// app.get('/exercises', (req, res) => {
+//     fetch(`https://exercisedb.p.rapidapi.com/exercises/${searchByParam}/${searchTermParam}`, options)
+//     .then(res => res.json())
+//     .then(json => {
+//         res.json(json)
+//         console.log(json)
+//     })
+//     .catch(err => console.error('error:' + err));
+// })
 
 
 

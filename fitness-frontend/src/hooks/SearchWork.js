@@ -20,7 +20,7 @@ export default search => {
             url: `https://exercisedb.p.rapidapi.com/exercises/${searchByParam}/${searchTermParam}`,
             headers: {
                 'x-rapidapi-host': 'exercisedb.p.rapidapi.com',
-                'x-rapidapi-key': '5e8b9cb1f0msh09ab79c40301ed3p1d798djsnca9c961a0b9f'
+                'x-rapidapi-key': 'd7e64b9d96mshab31c4df752e9cep1df2dfjsncf567034bfc0'
             }
         };
 
