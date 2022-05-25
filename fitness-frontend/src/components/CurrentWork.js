@@ -15,7 +15,7 @@ function CurrWorkList({ data, remove }) {
   return (
     <Box>
       <Typography>
-        {(data.length)}
+        {data.length}
       </Typography>
       <ul>
         {CurrWorkList}

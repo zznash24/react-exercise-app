@@ -10,11 +10,12 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LocalStor from "../hooks/LocalStor";
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
 
-const ExpandMore = styled((props) => { ///Code for the expand function on the MUI card.
+
+const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
@@ -69,11 +70,11 @@ function Result(props) {
             <Typography paragraph><b>Body part used:</b> {props.data.bodyPart}</Typography>
             <Typography paragraph><b>Equipment required:</b> {props.data.equipment}</Typography>
             <Box textAlign='center'>
-              {(cWorkStatus) = <Button onClick={() => { props.save(props.data); setcWorkStatus(true); }}>
-                  Save to Current WorkOut!
+              {<Button onClick={() => { props.save(props.data); setcWorkStatus(true); }}>
+                  Save to WorkOut!
                 </Button>}
             </Box>
-          </CardContent>
+            </CardContent>
         </Collapse>
       </Card>
     </li>

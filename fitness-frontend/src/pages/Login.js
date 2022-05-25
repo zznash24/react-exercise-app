@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import Grid from '@mui/material/Grid';
 import StopWatch from '../components/Stopwatch';
-import CurrWorkList from '../components/CurrentWork';
+// import CurrWorkList from '../components/CurrentWork';
 
 class Login extends Component {
 
@@ -13,7 +13,7 @@ class Login extends Component {
         <StopWatch />
       </Grid>
       <Grid item xs={6}>
-        <CurrWorkList />
+        {/* <CurrWorkList /> */}
       </Grid>
     </Grid>
   }

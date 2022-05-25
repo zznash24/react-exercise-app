@@ -8,20 +8,19 @@ import React, { useState } from 'react';
 import useLocalStorageState from "../hooks/LocalStor";
 
 function WorkoutApp() {
-  const [page, setPage] = React.useState(1);
-  const [itemsPerPage] = useState(5);
   const [values, searchByHolder, searchTermHolder, handleChangeFunc] = InputState();
   const [result, searchTags, show, handleSubmitFunc] = SearchWork();
-  const [cWorkMode, setcWorkMode] = useToggle();
   const [cWork, saveFunc] = useLocalStorageState();
+  const [cWorkMode, setcWorkMode] = useToggle();
+  const [itemsPerPage] = useState(5);
+  const [page, setPage] = React.useState(1);
   const indexOfLastItem = page * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentResults = result ? result.slice(indexOfFirstItem, indexOfLastItem) : [];
-  const resultList = (show) ? <Listresults data={currentResults} searchTags={searchTags} numResults={result.length} /> : null;
   const CurrWork = cWork.slice(indexOfFirstItem, indexOfLastItem);
-  const CurrWorkList = <CurrWorkList data={CurrWork} save={saveFunc} />
   let pagination;
 
+  
   if (!cWorkMode) {
     if (!show) {
       pagination = null;
@@ -38,11 +37,14 @@ function WorkoutApp() {
     }
   }
 
+// const CurrWorkList = <CurrWorkList data={CurrWork} save={saveFunc} />
+const resultList = (show) ? <Listresults data={currentResults} searchTags={searchTags} numResults={result.length} /> : null;
 
   return (
     <div>
+      <div cWorkMode={cWorkMode} setcWorkMode={setcWorkMode} page={page} setPage={setPage} />
       <div className='WorkoutApp'>
-      {(cWorkMode) ? CurrWorkList :
+      
         <div>
             <WorkoutSearch
               handleChange={handleChangeFunc}
@@ -53,7 +55,7 @@ function WorkoutApp() {
             />
             <div>{resultList}</div>
           </div>
-      }
+      
       </div>
       {pagination}
     </div>

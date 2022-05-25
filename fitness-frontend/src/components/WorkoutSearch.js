@@ -12,10 +12,7 @@ function WorkoutSearch(props) {
     return (
         <Paper className="paper-Form">
             <Typography component='div'>
-                <b>Search for a</b>
-                <b>Exercise Name</b>
-                <b>Targetted Muscle </b>
-                <b>Piece of Equipment</b>
+                <b>Search for a exercise name targetted muscle piece of equipment</b>
             </Typography>
             <form className="Form">
                 <FormControl>

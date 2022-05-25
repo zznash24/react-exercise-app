@@ -15,7 +15,7 @@ function App() {
       <header className="App-header">
         <h1>All Shapes and Sizes</h1>
       </header>
-      <Grid container spacing={2}>
+      {/* <Grid container spacing={2}>
         
         <Grid item>
           <Link to="/">Home</Link>
@@ -28,11 +28,11 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
         </Routes>
 
-      </Grid>
+      </Grid> */}
           <Grid>
-      {/*   <WorkoutApp /> */}
+        <WorkoutApp />
       {/*   <StopWatch /> */}
-            <CurrWork />
+            {/* <CurrWork /> */}
           </Grid>
        
     </div>
